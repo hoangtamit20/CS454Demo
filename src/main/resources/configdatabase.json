@@ -1,15 +1,15 @@
 {
 	"datasources": {
     "sqlserver": {
-      "url": "jdbc:sqlserver://HoangTam\\TAMHOANG;encrypt=true;trustServerCertificate=true;databaseName=QLNhanVienDB",
+      "url": "jdbc:sqlserver://localhost:1433;databaseName=qlnhanviendb;encrypt=true;trustServerCertificate=true;",
       "username": "sa",
-      "password": "123456",
+      "password": "123456tk",
       "driverClassName": "com.microsoft.sqlserver.jdbc.SQLServerDriver"
     },
     "mysql": {
-      "url": "jdbc:mysql://localhost:3306/QLNhanVienDB",
+      "url": "jdbc:mysql://localhost:3306/qlnhanviendb",
       "username": "root",
-      "password": "123456",
+      "password": "123456tk",
       "driverClassName": "com.mysql.jdbc.Driver"
     }
   },
