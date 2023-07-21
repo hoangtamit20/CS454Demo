@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.model.BaoHiem;
 import com.example.model.ChucVu;
 import com.example.model.HopDong;
 import com.example.model.NhanVien;
@@ -27,7 +28,6 @@ public class ConnectToDB {
         } else if (databaseType.equals("sqlserver")) {
             return DriverManager.getConnection(SQL_SERVER_URL, SQL_SERVER_USERNAME, SQL_SERVER_PASSWORD);
         } else {
-//        	System.out.println("Toi da vao day!");
             throw new SQLException("Invalid database type: " + databaseType);
         }
     }
@@ -108,6 +108,30 @@ public class ConnectToDB {
 			}
     	}
     	return listHopDong;
+    }
+    
+    public List<BaoHiem> getAllBaoHiem() throws SQLException
+    {
+    	var listBaoHiem = new ArrayList<BaoHiem>();
+    	String sql = "SELECT * FROM BaoHiem";
+    	PreparedStatement statement = getConnection("sqlserver").prepareStatement(sql);
+    	ResultSet resultSet = statement.executeQuery();
+    	while(resultSet.next())
+    	{
+    		try {
+				listBaoHiem.add(new BaoHiem(resultSet.getInt("idBaoHiem"),
+						resultSet.getString("soBaoHiem"),
+						resultSet.getDate("ngayCap"),
+						resultSet.getString("noiCap"),
+						resultSet.getString("noiKhamBenh"),
+						resultSet.getInt("idNhanvien")
+						));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	return listBaoHiem;
     }
     
     public List<PhongBan> getAllPhongBanMySQL() throws SQLException

@@ -12,31 +12,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.data.ConnectToDB;
+import com.example.model.BaoHiem;
 import com.example.model.NhanVien;
 import com.example.model.PhongBan;
 
 @RestController
 public class NhanVienController {
 	
-	private List<NhanVien> myListNV = new ArrayList<NhanVien>();
-	
-	@PostMapping("/createnhanvien")
-	public NhanVien createNhanVien(@RequestBody NhanVien nhanVien)
+	@GetMapping("/listNhanVien")
+	public List<NhanVien> getAllListNhanVien() throws SQLException
 	{
-		myListNV.add(nhanVien);
-		return nhanVien;
-	}
-	
-	@GetMapping("/listnhanvien")
-	public List<NhanVien> getAll()
-	{
-		return myListNV;
+		return new ConnectToDB().getAllNhanVien();
 	}
 	
 	@GetMapping("/listPhongBan")
 	public List<PhongBan> getAllListPhongBan() throws SQLException
 	{
 		return new ConnectToDB().getAllPhongBan();
+	}
+	
+	@GetMapping("/listbaohiem")
+	public List<BaoHiem> getAllBaoHiem() throws SQLException
+	{
+		return new ConnectToDB().getAllBaoHiem();
 	}
 	
 	@GetMapping("/listPhongBanMySQL")
