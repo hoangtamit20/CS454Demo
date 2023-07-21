@@ -14,13 +14,13 @@ import com.example.model.NhanVien;
 import com.example.model.PhongBan;
 public class ConnectToDB {
 
-	private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/qlnhanviendb";
+	private static final String MYSQL_URL = "jdbc:mysql://localhost:3306/QLNhanVienDB";
     private static final String MYSQL_USERNAME = "root";
-    private static final String MYSQL_PASSWORD = "123456tk";
+    private static final String MYSQL_PASSWORD = "123456";
 
-    private static final String SQL_SERVER_URL = "jdbc:sqlserver://localhost:1433;databaseName=qlnhanviendb;encrypt=true;trustServerCertificate=true;";
+    private static final String SQL_SERVER_URL = "jdbc:sqlserver://HoangTam\\TAMHOANG;encrypt=true;trustServerCertificate=true;databaseName=QLNhanVienDB";
     private static final String SQL_SERVER_USERNAME = "sa";
-    private static final String SQL_SERVER_PASSWORD = "123456tk";
+    private static final String SQL_SERVER_PASSWORD = "123456";
 
     public static Connection getConnection(String databaseType) throws SQLException {
         if (databaseType.equals("mysql")) {
